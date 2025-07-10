@@ -1,0 +1,19 @@
+# Node backend
+node_modules/
+.env
+db-data
+
+# Logs
+logs
+*.log
+
+# PostgreSQL dumps (optional)
+
+
+# Frontend node deps
+/frontend/node_modules/
+/frontend/.env
+
+# OS
+.DS_Store
+Thumbs.db
