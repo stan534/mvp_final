@@ -6,6 +6,7 @@ import { Upload, ArrowUpCircle, RefreshCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ChatMessage from "@/components/ChatMessage";
 import ResultsTable from "@/components/ResultsTable";
+import ConnectWalletButton from "@/components/ConnectWalletButton";
 
 // Solana wallet imports
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
@@ -231,6 +232,11 @@ const Index = () => {
   };
   return (
     <div className="flex flex-col h-screen bg-white">
+      <nav className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-10">
+        <div className="px-4 py-2 flex justify-end">
+          <ConnectWalletButton />
+        </div>
+      </nav>
       <ScrollArea className="flex-1 p-4 space-y-2">
         {messages.length === 0 && (
           <div className="text-center text-gray-500">
