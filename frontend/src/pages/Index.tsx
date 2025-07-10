@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Upload, ArrowUpCircle } from "lucide-react";
+import { Upload, ArrowUpCircle, RefreshCcw } from "lucide-react";
 
 import { useToast } from "@/hooks/use-toast";
 import ChatMessage from "@/components/ChatMessage";
@@ -220,6 +220,15 @@ const Index = () => {
       e.target.value = "";
     }
   };
+
+  const handleReset = () => {
+    setMessages([]);
+    setConversationId(null);
+    setUploadResults(null);
+    setTransferIntent(null);
+    sessionStorage.removeItem("messages");
+    sessionStorage.removeItem("conversationId");
+  };
   return (
     <div className="flex flex-col h-screen bg-white">
       <ScrollArea className="flex-1 p-4 space-y-2">
@@ -261,6 +270,12 @@ const Index = () => {
           <Upload className="w-6 h-6" />
         </label>
         <button
+          onClick={handleReset}
+          className="text-gray-600 hover:text-gray-800"
+        >
+          <RefreshCcw className="w-6 h-6" />
+        </button>
+        <button
           onClick={handleSendPrompt}
           disabled={isLoading}
           className="text-blue-600 hover:text-blue-800 disabled:opacity-50"
@@ -272,6 +287,7 @@ const Index = () => {
           )}
         </button>
       </div>
+      <div className="px-4 pb-4 text-xs text-gray-500">Supported file types: CSV and TXT</div>
     </div>
   );
 };
